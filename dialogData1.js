@@ -25,7 +25,6 @@ bot.dialog('/', [ //El alcance solo llega a un dialogo
         builder.Prompts.text(session, '¿Desea la carta?');
     }, 
         function (session, results) {
-        session.dialogData.lugar = results.response;// // Este valor solo recide en este dialogo
         session.endConversation('En un momento le tomo el pedido');// terminamos una conversacion 
         session.beginDialog('/carta');// enlaza la siguiente linea de conversación
          
@@ -62,7 +61,6 @@ bot.dialog('/mesero', [
        builder.Prompts.text(session, 'con mucho gusto');
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;// Este valor solo recide en este dialogo
         session.beginDialog('/costo')
         
     }
@@ -95,7 +93,6 @@ bot.dialog('/confirmar', [
         
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;
         session.beginDialog('/confirmar_pedido')
         
     }
@@ -109,7 +106,6 @@ bot.dialog('/confirmar_pedido', [// ALMACENAR LA INFORMACION
        
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;
         session.beginDialog('/pedircuenta')
         
     }
@@ -120,7 +116,6 @@ bot.dialog('/pedircuenta', [
         
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;
         session.beginDialog('/tipotarjeta')
         
     }
@@ -131,7 +126,6 @@ bot.dialog('/tipotarjeta', [
         session.send("![tarjeta](http://1.bp.blogspot.com/-6n_B6xxACcs/TnA9rmKMvcI/AAAAAAAABEs/rjs6zovjww0/s1600/tarjeta-de-debito.gif)");
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;
         session.beginDialog('/respuesta')
  
     }
@@ -142,12 +136,9 @@ bot.dialog('/respuesta', [
         
     },
     function (session, results) {
-        session.dialogData.lugar = results.response;
         session.send("![hasta pronto](http://www.canalgif.net/Gifs-animados/Expresiones/Hasta-luego/Imagen-animada-Hasta-luego-08.gif)");
         //session.send("![hasta pronto](https://www.letslearnspanish.co.uk/wp-content/uploads/2014/04/hasta-pronto-300x169-1.jpg)");
         session.endDialog('estamos para servirle')
-        session.cancelDialog('')
-
         
     }
 ]);
